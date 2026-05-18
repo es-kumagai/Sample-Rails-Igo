@@ -1,12 +1,12 @@
 <h1>碁盤</h1>
 
-<div class="go-board">
+<div id="go-board" class="go-board">
   <% 1.upto(19) do |y| %>
     <% 1.upto(19) do |x| %>
       <% move = @stones_by_position[[x, y]] %>
       <div class="go-point<%= " go-point--star" if @star_points.include?([x, y]) %>">
         <% if move %>
-          <span class="go-stone go-stone--<%= move.color %>">
+          <span class="go-stone go-stone--<%= move.color %>" data-go-move-number="<%= move.move_number %>">
             <%= move.move_number %>
           </span>
         <% end %>
