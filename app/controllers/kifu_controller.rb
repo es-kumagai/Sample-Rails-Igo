@@ -1,5 +1,7 @@
 class KifuController < ApplicationController
   def show
+    @kifu = Kifu.find_or_create_by!(id: params[:id])
+    @moves = @kifu.moves.order(move_number: :asc)
   end
   
   def move

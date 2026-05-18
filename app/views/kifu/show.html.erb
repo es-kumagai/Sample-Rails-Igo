@@ -1,2 +1,20 @@
-<h1>Kifu#show</h1>
-<p>Find me in app/views/kifu/show.html.erb</p>
+<% stones_by_position = @moves.each_with_object({}) do |move, stones| %>
+  <% stones[[move.x, move.y]] = move %>
+<% end %>
+
+<div class="go-board">
+  <% 1.upto(19) do |y| %>
+    <% 1.upto(19) do |x| %>
+      <% move = stones_by_position[[x, y]] %>
+      <div class="go-point">
+        <% if move %>
+          <span class="go-stone go-stone--<%= move.color %>">
+            <%= move.move_number %>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<%= button_to "棋譜を追加", kifu_move_path(@kifu), method: :get %>
