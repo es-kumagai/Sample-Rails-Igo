@@ -3,12 +3,13 @@
 <% stones_by_position = @moves.each_with_object({}) do |move, stones| %>
   <% stones[[move.x, move.y]] = move %>
 <% end %>
+<% star_points = [[4, 4], [4, 10], [4, 16], [10, 4], [10, 10], [10, 16], [16, 4], [16, 10], [16, 16]] %>
 
 <div class="go-board">
   <% 1.upto(19) do |y| %>
     <% 1.upto(19) do |x| %>
       <% move = stones_by_position[[x, y]] %>
-      <div class="go-point">
+      <div class="go-point <%= "go-point--star" if star_points.include?([x, y]) %>">
         <% if move %>
           <span class="go-stone go-stone--<%= move.color %>">
             <%= move.move_number %>

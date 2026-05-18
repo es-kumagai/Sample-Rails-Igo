@@ -71,6 +71,10 @@
   height: 50%;
 }
 
+.go-point--star {
+  background: radial-gradient(circle at calc(50% + 0.5px) calc(50% + 1px), var(--line-color) 0 5px, transparent 5px);
+}
+
 .go-stone {
   position: relative;
   z-index: 1;
