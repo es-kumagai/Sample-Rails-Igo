@@ -1,7 +1,11 @@
 class KifuController < ApplicationController
   def show
+    @star_points = [[4, 4], [4, 10], [4, 16], [10, 4], [10, 10], [10, 16], [16, 4], [16, 10], [16, 16]]
     @kifu = Kifu.find_or_create_by!(id: params[:id])
     @moves = @kifu.moves.order(move_number: :asc)
+    @stones_by_position = @moves.each_with_object({}) do |move, stones|
+      stones[[move.x, move.y]] = move
+    end
   end
   
   def move
