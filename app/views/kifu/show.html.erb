@@ -1,3 +1,5 @@
+<h1>碁盤</h1>
+
 <% stones_by_position = @moves.each_with_object({}) do |move, stones| %>
   <% stones[[move.x, move.y]] = move %>
 <% end %>

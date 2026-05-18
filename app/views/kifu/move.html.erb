@@ -1,23 +1,23 @@
-<h1>New Move</h1>
+<h1>次の手を記録</h1>
 
 <%= form_with model: @move, url: kifu_move_path(@kifu), method: :post do |form| %>
   <div>
-    <%= form.label :move_number %>
+    着手番号
     <%= form.number_field :move_number %>
   </div>
 
   <div>
-    <%= form.label :color %>
+    碁石の色
     <%= form.select :color, Move.colors.keys %>
   </div>
 
   <div>
-    <%= form.label :x %>
+    横の位置
     <%= form.number_field :x %>
   </div>
 
   <div>
-    <%= form.label :y %>
+    縦の位置
     <%= form.number_field :y %>
   </div>
 
@@ -26,4 +26,4 @@
   </div>
 <% end %>
 
-<%= button_to "Showへ戻る", kifu_path(@kifu), method: :get %>
+<%= button_to "碁盤へ戻る", kifu_path(@kifu), method: :get %>
