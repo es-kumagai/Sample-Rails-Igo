@@ -31,7 +31,11 @@ class KifuController < ApplicationController
   end
 
   def next_move_color
-    @kifu.moves.order(move_number: :desc).first&.black? ? :white : :black
+    if @kifu.moves.order(move_number: :desc).first&.black?
+      :white
+    else
+      :black
+    end
   end
   
   def move_params
